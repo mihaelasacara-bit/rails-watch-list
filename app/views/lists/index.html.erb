@@ -3,9 +3,9 @@
   <button class="btn btn-primary"><%= link_to "Create List", new_list_path %></button>
 </div>
 <div>
-  <ul>
+  <ul class="list-inline">
     <% @lists.each do |list| %>
-      <li><%= list.name %></li>
+      <li class="list-inline-item ms-3">🎬 <%= link_to list.name, list %></li>
     <% end %>
   </ul>
 </div>
