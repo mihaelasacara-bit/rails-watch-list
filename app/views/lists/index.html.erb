@@ -1,0 +1,11 @@
+<div class="m-3 d-flex justify-content-between">
+  <h1>Watch Lists</h1>
+  <button class="btn btn-primary"><%= link_to "Create List", new_list_path %></button>
+</div>
+<div>
+  <ul>
+    <% @lists.each do |list| %>
+      <li><%= list.name %></li>
+    <% end %>
+  </ul>
+</div>
