@@ -2,6 +2,25 @@
   text-decoration: none;
 }
 
-.btn a:link {
+.btn {
+  height: 50px;
+  a:link {
   text-decoration: none;
+  }
+}
+
+.banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+.card {
+  border-radius: 5px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
 }

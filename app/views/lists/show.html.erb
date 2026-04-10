@@ -1,15 +1,28 @@
-<div class="m-3 d-flex justify-content-between">
+<div class="banner justify-content-center d-flex align-items-center"
+  <% if @list.photo.attached? %> style= "background-image: linear-gradient(rgba(58, 58, 58, 0.3), rgba(166, 166, 166, 0.3)),
+  url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')"<% end %>>
   <h1><%= @list.name %></h1>
-  <button class="btn btn-primary"><%= link_to "Add Bookmark", new_list_bookmark_path(@list) %></button>
+</div>
+<div class="m-3 d-flex justify-content-end">
+  <button class="btn btn-primary align-self-start"><%= link_to "Add Bookmark", new_list_bookmark_path(@list) %></button>
 </div>
 <div class="m-3 d-flex">
     <% @list.bookmarks.each do |bookmark| %>
-      <div class="card" style="width: 18rem;">
-        <img src=<%= bookmark.movie.poster_url %> class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><%= bookmark.movie.title %></h5>
-          <p class="card-text"><%= bookmark.movie.overview%></p>
-          <button class="btn btn-light"><%= link_to "🗑️",  bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></button>
+      <div class="card m-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src=<%= bookmark.movie.poster_url %> class="img-fluid rounded-start" alt="<%= bookmark.movie.title%> poster" style="width:100%;height:100%;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= bookmark.movie.title %></h5>
+              <p class="card-text"><%= bookmark.movie.overview%></p>
+              <p class="card-text"><small class="text-muted">Bookmark comment: <%= bookmark.comment %></small></p>
+            </div>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-light"><%= link_to "🗑️",  bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></button>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>

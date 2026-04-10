@@ -24,6 +24,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.expect(list: [ :name ])
+    params.expect(list: [ :name, :photo ])
   end
 end
